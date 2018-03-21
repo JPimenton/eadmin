@@ -50,4 +50,8 @@ public class Documento {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "Documento: "+codigo;
+	}
 }

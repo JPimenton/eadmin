@@ -7,6 +7,7 @@ import static org.junit.Assert.assertFalse;
 import java.util.Date;
 
 import org.junit.Test;
+
 import org.junit.Before;
 
 public class ExpedienteTest {
@@ -15,7 +16,7 @@ public class ExpedienteTest {
 	private static final String NOMBRE_EXPEDIENTE = "nombre";
 	private static final Date FECHA_CREACION = new Date();
 	private static final Date FECHA_ARCHIVADO = new Date();
-	private static final boolean EXPEDIENTE_PUBLICO = true;
+	private static final Boolean EXPEDIENTE_PUBLICO = true;
 	private static final EstadoExpediente ESTADO_EXPEDIENTE = EstadoExpediente.INICIADO;
 	
 	private Expediente exp;
@@ -66,7 +67,9 @@ public class ExpedienteTest {
 	
 	@Test
 	public void deberiaDevolverHashCodeDelCodigo() {
-		final int resultado = exp.hashCode();
+		final Expediente exp2 = new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
+				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE);
+		final int resultado = exp2.hashCode();
 		assertEquals(exp.hashCode(), resultado);
 	}
 

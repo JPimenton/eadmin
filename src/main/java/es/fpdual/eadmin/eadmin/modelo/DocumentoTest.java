@@ -3,6 +3,7 @@ package es.fpdual.eadmin.eadmin.modelo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 
@@ -67,5 +68,9 @@ public class DocumentoTest {
 		assertEquals(CODIGO_DOCUMENTO.hashCode(), resultado);
 	}
 
+	@Test
+	public void testeoToString() {
+		assertNotNull(doc.toString());
+	}
 	
 }
