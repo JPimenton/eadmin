@@ -48,7 +48,7 @@ public class RepositorioTest {
 		
 		assertTrue(RepositorioDocumentos.getDocumentos().
 				get(RepositorioDocumentos.getDocumentos().
-				indexOf(doc)).equals(doc2));
+				indexOf(doc)).getEstado()==doc2.getEstado());
 		
 	}
 	
