@@ -38,11 +38,24 @@ public class ServicioDocumentoImplTest {
 	
 	@Test
 	public void deberiaAlmacenarUnDocumento() {
+		when (DOCUMENTO.getCodigo()).thenReturn(1);
+		when (DOCUMENTO.getFechaCreacion()).thenReturn(new Date(1/1/2018));
+		when (DOCUMENTO.getNombre()).thenReturn("nombre");
 		
+		final Documento resultado = this.ServicioDocumento.altaDocumento(DOCUMENTO);
+		
+		verify(this.repositorioDocumento).altaDocumento(any());
+		//assertEquals(1, this.repositorioDocumento.getDocumentos().size());
+		assertEquals(resultado.getCodigo(),DOCUMENTO.getCodigo());
+		assertEquals(resultado.getNombre(),DOCUMENTO.getNombre());
+		assertNotEquals(resultado.getFechaCreacion(),DOCUMENTO.getFechaCreacion());
+		assertEquals(resultado,DOCUMENTO);
+		
+		/*
 		this.ServicioDocumento.altaDocumento(DOCUMENTO);
 		
 		verify(this.repositorioDocumento).altaDocumento(DOCUMENTO);
-		//assertEquals(1, this.repositorioDocumento.getDocumentos().size());
+		//assertEquals(1, this.repositorioDocumento.getDocumentos().size());*/
 	}
 	
 	@Test

@@ -15,8 +15,8 @@ public class Expediente extends AdministracionElectronicaBase {
 
 
 	public Expediente(Integer codigo, String nombre, 
-			Date fechaCreacion, Boolean publico,EstadoExpediente estado) {
-		super(codigo, nombre, fechaCreacion, publico);
+			Date fechaCreacion, Boolean publico,EstadoExpediente estado, Date fechaActualizacion) {
+		super(codigo, nombre, fechaCreacion, publico,fechaActualizacion);
 		this.estado=estado;
 	}
 
@@ -41,6 +41,7 @@ public class Expediente extends AdministracionElectronicaBase {
 					getNombre().equals(((Expediente) obj).getNombre()) && 
 					getFechaCreacion().equals(((Expediente) obj).getFechaCreacion()) &&
 					getPublico().equals(((Expediente) obj).getPublico()) &&
+					getFechaUltimaActualizacion().equals(((Expediente) obj).getFechaUltimaActualizacion()) &&
 					estado.equals(((Expediente) obj).getEstado());
 		}
 		return false;

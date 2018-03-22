@@ -21,8 +21,15 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 	}
 	
 	@Override
-	public void altaDocumento(Documento documento) {
-		repositorioDocumento.altaDocumento(documento);
+	public Documento altaDocumento(Documento documento) {
+		
+		final Documento documentoModificado = 
+				obtenerDocumentoConFechaCorrecta(documento);
+		
+		repositorioDocumento.altaDocumento(documentoModificado);
+		return documentoModificado;
+		/*repositorioDocumento.altaDocumento(documento);
+		return documento;*/
 	}
 
 	@Override
@@ -47,7 +54,8 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 				documento.getNombre(), 
 				dameFechaActual(), 
 				documento.getPublico(), 
-				documento.getEstado());
+				documento.getEstado(), 
+				documento.getFechaUltimaActualizacion());
 	}
 	
 	protected Date dameFechaActual() {

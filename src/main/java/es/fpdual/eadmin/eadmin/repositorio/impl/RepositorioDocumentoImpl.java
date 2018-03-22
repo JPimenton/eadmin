@@ -1,6 +1,7 @@
 package es.fpdual.eadmin.eadmin.repositorio.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,13 +28,25 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento {
 		if (!documentos.contains(documento)) {
 			throw new IllegalArgumentException("El documento no existe");
 		}
-		documentos.set(documentos.indexOf(documento), documento);
+		final Documento documentoNuevo = obtenerDocumentoConFechaDeModificacion(documento);
+		documentos.set(documentos.indexOf(documento), documentoNuevo);
+	}
+	
+	protected Documento obtenerDocumentoConFechaDeModificacion(Documento documento) {
+		return new Documento(
+				documento.getCodigo(), 
+				documento.getNombre(), 
+				new Date(), 
+				documento.getPublico(), 
+				documento.getEstado(), 
+				documento.getFechaUltimaActualizacion());
 	}
 
 	@Override
 	public void eliminarDocumento(Integer codigo) {
 		Documento documentoEncontrado = null;
-		/*for(int i = 0; i< documentos.size(); i++) {
+		
+		/* for(int i = 0; i< documentos.size(); i++) {
 			if ( documentos.get(i).getCodigo().equals(codigo)) {
 				documentoEncontrado = documentos.get(i);
 				break;
@@ -48,6 +61,7 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento {
 			documentos.remove(documentoEncontrado);
 		}
 	}
+	
 	@Override
 	public List<Documento> getDocumentos() {
 		return documentos;

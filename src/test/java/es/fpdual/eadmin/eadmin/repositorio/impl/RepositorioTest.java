@@ -20,7 +20,7 @@ public class RepositorioTest {
 	@Before
 	public void Inicializar() {
 	doc = new Documento(1,"Registro de prueba",new Date(),
-			false,EstadoDocumento.ACTIVO);
+			false,EstadoDocumento.ACTIVO,new Date(8/8/2003));
 	
 	RepositorioDocumentos = new RepositorioDocumentoImpl();
 	}
@@ -42,7 +42,7 @@ public class RepositorioTest {
 		RepositorioDocumentos.altaDocumento(doc);
 		
 		Documento doc2 = new Documento(1,"Registro de prueba",new Date(),
-				false,EstadoDocumento.APROBADO);
+				false,EstadoDocumento.APROBADO,new Date(8/8/2003));
 		
 		RepositorioDocumentos.modificaDocumento(doc2);
 		
@@ -57,7 +57,7 @@ public class RepositorioTest {
 		RepositorioDocumentos.altaDocumento(doc);
 		
 		Documento doc2 = new Documento(2,"Registro de prueba",new Date(),
-				false,EstadoDocumento.APROBADO);
+				false,EstadoDocumento.APROBADO,new Date(8/8/2003));
 		
 		RepositorioDocumentos.modificaDocumento(doc2);
 			
@@ -75,7 +75,7 @@ public class RepositorioTest {
 	public void EliminarDocumentoTestFail(){
 		RepositorioDocumentos.altaDocumento(doc);
 		Documento doc2 = new Documento(2,"Registro de prueba",new Date(),
-				false,EstadoDocumento.APROBADO);
+				false,EstadoDocumento.APROBADO,new Date(8/8/2003));
 		RepositorioDocumentos.eliminarDocumento(doc2.getCodigo());
 		
 	}

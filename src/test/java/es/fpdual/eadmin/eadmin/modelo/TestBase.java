@@ -13,13 +13,14 @@ import org.junit.Before;
 public class TestBase {
 	public class AdministracionElectronicaBaseFake extends AdministracionElectronicaBase {
 
-		public AdministracionElectronicaBaseFake(Integer codigo, String nombre, Date fechaCreacion, Boolean publico) {
-			super(codigo, nombre, fechaCreacion, publico);
+		public AdministracionElectronicaBaseFake(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, Date fechaActualizacion) {
+			super(codigo, nombre, fechaCreacion, publico, fechaActualizacion);
 		}
 		
 	}
 
 	private static final Date FECHA_CREACION = new Date();
+	private static final Date FECHA_ACTUALIZACION = new Date(8/8/2003);
 	private static final String NOMBRE_DOCUMENTO = "nombre";
 	private static final boolean DOCUMENTO_PUBLICO = true;
 	private static final Integer CODIGO_DOCUMENTO = 1;
@@ -29,7 +30,7 @@ public class TestBase {
 	public void Inicializar() {
 		base = 
 		new AdministracionElectronicaBaseFake(CODIGO_DOCUMENTO,NOMBRE_DOCUMENTO,FECHA_CREACION,
-				DOCUMENTO_PUBLICO);
+				DOCUMENTO_PUBLICO, FECHA_ACTUALIZACION);
 	}
 	
 	@Test
@@ -43,19 +44,21 @@ public class TestBase {
 		
 		assertEquals(DOCUMENTO_PUBLICO, base.getPublico());
 				
+		assertEquals(FECHA_ACTUALIZACION, base.getFechaUltimaActualizacion());
+
 	}
 	
 	@Test
 	public void deberiaDevolverTrueSiTienenIgualCodigo() {
 		final AdministracionElectronicaBaseFake base2 = new AdministracionElectronicaBaseFake(CODIGO_DOCUMENTO,NOMBRE_DOCUMENTO,FECHA_CREACION,
-				DOCUMENTO_PUBLICO);
+				DOCUMENTO_PUBLICO,FECHA_ACTUALIZACION);
 		final Boolean resultado = base2.equals(base);
 		assertTrue(resultado);
 	}
 
 	@Test
 	public void deberiaDevolverFalseSiNoTienenIgualCodigo() {
-		final AdministracionElectronicaBaseFake base2 = new AdministracionElectronicaBaseFake(5, null, null, null);
+		final AdministracionElectronicaBaseFake base2 = new AdministracionElectronicaBaseFake(5, null, null, null,null);
 
 		final Boolean resultado = base2.equals(base);
 		assertFalse(resultado);

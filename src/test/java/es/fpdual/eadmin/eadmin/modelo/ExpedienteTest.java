@@ -16,6 +16,7 @@ public class ExpedienteTest {
 	private static final String NOMBRE_EXPEDIENTE = "nombre";
 	private static final Date FECHA_CREACION = new Date();
 	private static final Date FECHA_ARCHIVADO = new Date();
+	private static final Date FECHA_ACTUALIZACION = new Date(8/8/2003);
 	private static final Boolean EXPEDIENTE_PUBLICO = true;
 	private static final EstadoExpediente ESTADO_EXPEDIENTE = EstadoExpediente.INICIADO;
 	
@@ -25,7 +26,7 @@ public class ExpedienteTest {
 	public void Inicializar() {
 		exp = 
 		new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
-				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE);
+				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION);
 	}
 	
 	@Test
@@ -40,20 +41,22 @@ public class ExpedienteTest {
 		assertEquals(EXPEDIENTE_PUBLICO, exp.getPublico());
 		
 		assertEquals(ESTADO_EXPEDIENTE, exp.getEstado());
+		
+		assertEquals(FECHA_ACTUALIZACION, exp.getFechaUltimaActualizacion());
 				
 	}
 	
 	@Test
 	public void deberiaDevolverTrueSiTienenIgualCodigo() {
 		final Expediente exp2 = new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
-				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE);
+				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION);
 		final Boolean resultado = exp2.equals(exp);
 		assertTrue(resultado);
 	}
 
 	@Test
 	public void deberiaDevolverFalseSiNoTienenIgualCodigo() {
-		final Expediente exp2 = new Expediente(5, null, null, null, null);
+		final Expediente exp2 = new Expediente(5, null, null, null, null,null);
 
 		final Boolean resultado = exp2.equals(exp);
 		assertFalse(resultado);
@@ -68,7 +71,7 @@ public class ExpedienteTest {
 	@Test
 	public void deberiaDevolverHashCodeDelCodigo() {
 		final Expediente exp2 = new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
-				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE);
+				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION);
 		final int resultado = exp2.hashCode();
 		assertEquals(exp.hashCode(), resultado);
 	}

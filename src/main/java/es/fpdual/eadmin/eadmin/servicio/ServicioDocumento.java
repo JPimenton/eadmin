@@ -6,7 +6,7 @@ import es.fpdual.eadmin.eadmin.modelo.Documento;
 
 public interface ServicioDocumento {
 
-	void altaDocumento(Documento documento);
+	Documento altaDocumento(Documento documento);
 
 	Documento modificaDocumento(Documento documento);
 	

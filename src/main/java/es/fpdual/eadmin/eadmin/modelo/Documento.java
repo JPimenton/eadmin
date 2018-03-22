@@ -8,10 +8,8 @@ public class Documento extends AdministracionElectronicaBase {
 
 	
 	public Documento(Integer codigo, String nombre,
-			Date fechaCreacion, Boolean publico,EstadoDocumento estado) {
-		super(codigo, nombre, fechaCreacion, publico);
-		
-		
+			Date fechaCreacion, Boolean publico,EstadoDocumento estado, Date fechaActualizacion) {
+		super(codigo, nombre, fechaCreacion, publico,fechaActualizacion);
 	}
 
 	public EstadoDocumento getEstado() {

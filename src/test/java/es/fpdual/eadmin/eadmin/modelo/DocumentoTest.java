@@ -12,7 +12,8 @@ import org.junit.Before;
 
 public class DocumentoTest {
 
-	private static final Date FECHA_CREACION = new Date();
+	private static final Date FECHA_CREACION = new Date(1/1/2000);
+	private static final Date FECHA_ACTUALIZACION = new Date(8/8/2003);
 	private static final String NOMBRE_DOCUMENTO = "nombre";
 	private static final boolean DOCUMENTO_PUBLICO = true;
 	private static final Integer CODIGO_DOCUMENTO = 1;
@@ -22,7 +23,7 @@ public class DocumentoTest {
 	public void Inicializar() {
 		doc = 
 		new Documento(CODIGO_DOCUMENTO,NOMBRE_DOCUMENTO,FECHA_CREACION,
-				DOCUMENTO_PUBLICO,EstadoDocumento.ACTIVO);
+				DOCUMENTO_PUBLICO,EstadoDocumento.ACTIVO,FECHA_ACTUALIZACION);
 	}
 	
 	@Test
@@ -34,6 +35,8 @@ public class DocumentoTest {
 		
 		assertEquals(FECHA_CREACION, doc.getFechaCreacion());
 		
+		assertEquals(FECHA_ACTUALIZACION, doc.getFechaUltimaActualizacion());
+		
 		assertEquals(DOCUMENTO_PUBLICO, doc.getPublico());
 		
 		assertEquals(EstadoDocumento.ACTIVO, doc.getEstado());
@@ -43,14 +46,14 @@ public class DocumentoTest {
 	@Test
 	public void deberiaDevolverTrueSiTienenIgualCodigo() {
 		final Documento doc2 = new Documento(CODIGO_DOCUMENTO,NOMBRE_DOCUMENTO,FECHA_CREACION,
-				DOCUMENTO_PUBLICO,EstadoDocumento.ACTIVO);
+				DOCUMENTO_PUBLICO,EstadoDocumento.ACTIVO,FECHA_ACTUALIZACION);
 		final Boolean resultado = doc2.equals(doc);
 		assertTrue(resultado);
 	}
 
 	@Test
 	public void deberiaDevolverFalseSiNoTienenIgualCodigo() {
-		final Documento doc2 = new Documento(5, null, null, null, null);
+		final Documento doc2 = new Documento(5, null, null, null, null, null);
 
 		final Boolean resultado = doc2.equals(doc);
 		assertFalse(resultado);
