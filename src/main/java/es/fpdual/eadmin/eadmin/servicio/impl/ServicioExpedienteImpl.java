@@ -34,8 +34,6 @@ public class ServicioExpedienteImpl implements ServicioExpediente {
 		repositorioExpediente.altaExpediente(expedienteModificado);
 		return expedienteModificado;
 		
-		/*repositorioDocumento.altaDocumento(documento);
-		return documento;*/
 	}
 
 	@Override
@@ -55,13 +53,6 @@ public class ServicioExpedienteImpl implements ServicioExpediente {
 	}
 
 	protected Expediente obtenerExpedienteConFechaCorrectaAlta(Expediente expediente) {
-		/*return new Documento(
-				documento.getCodigo(), 
-				documento.getNombre(), 
-				dameFechaActual(), 
-				documento.getPublico(), 
-				documento.getEstado(), 
-				null);*/
 		
 		return new ExpedienteBuilder().
 				conCodigo(expediente.getCodigo()).
@@ -75,13 +66,7 @@ public class ServicioExpedienteImpl implements ServicioExpediente {
 	}
 	
 	protected Expediente obtenerExpedienteConFechaCorrectaMod(Expediente expediente) {
-		/*return new Documento(
-				documento.getCodigo(), 
-				documento.getNombre(), 
-				documento.getFechaCreacion(), 
-				documento.getPublico(), 
-				documento.getEstado(), 
-				dameFechaActual());*/
+
 		return new ExpedienteBuilder().clonar(expediente).confechaActualizacion(dameFechaActual()).
 		construir();
 		

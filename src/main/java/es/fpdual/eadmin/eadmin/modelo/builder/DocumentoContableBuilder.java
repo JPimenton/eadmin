@@ -12,6 +12,7 @@ public class DocumentoContableBuilder extends DocumentoBuilder {
 	private BigDecimal importe;
 	private String nifInteresado;
 	
+	@Override
 	public DocumentoContable construir(){
 		return new DocumentoContable(codigo, nombre, fechaCreacion, 
 				publico,  estado, fechaUltimaActualizacion,

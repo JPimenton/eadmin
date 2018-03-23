@@ -58,8 +58,7 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 		}*/
 		
 		expedienteEncontrado =
-		expediente.stream().filter(e -> e.getCodigo().equals(expediente)).
-		findFirst().orElseGet(null);
+		expediente.stream().filter(e -> e.getCodigo().equals(expediente)).findFirst().orElseGet(null);
 		
 		if (Objects.nonNull(expedienteEncontrado)) {
 			expediente.remove(expedienteEncontrado);
