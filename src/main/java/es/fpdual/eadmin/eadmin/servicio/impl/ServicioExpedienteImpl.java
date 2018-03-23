@@ -22,7 +22,7 @@ public class ServicioExpedienteImpl implements ServicioExpediente {
 	public ServicioExpedienteImpl(RepositorioExpediente repositorioExpediente) {
 		this.repositorioExpediente = repositorioExpediente;
 	}
-	
+	 
 	@Override
 	public Expediente altaExpediente(Expediente expediente) {
 		
