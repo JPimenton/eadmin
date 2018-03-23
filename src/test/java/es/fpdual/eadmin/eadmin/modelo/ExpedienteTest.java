@@ -70,7 +70,7 @@ public class ExpedienteTest {
 		final boolean resultado = exp.equals(new Date());
 		assertFalse(resultado);
 	}
-	
+	 
 	@Test
 	public void deberiaDevolverHashCodeDelCodigo() {
 		final Expediente exp2 = new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
