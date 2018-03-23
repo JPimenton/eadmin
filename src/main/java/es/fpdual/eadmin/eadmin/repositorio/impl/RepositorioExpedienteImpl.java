@@ -40,7 +40,9 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 				new Date(), 
 				expediente.getPublico(), 
 				expediente.getEstado(), 
-				expediente.getFechaUltimaActualizacion());
+				expediente.getFechaUltimaActualizacion(),
+				expediente.getDocumentos()
+				);
 		
 	}
 

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.fpdual.eadmin.eadmin.modelo.Documento;
+import es.fpdual.eadmin.eadmin.modelo.Expediente;
 import es.fpdual.eadmin.eadmin.modelo.builder.DocumentoBuilder;
+import es.fpdual.eadmin.eadmin.modelo.builder.ExpedienteBuilder;
 import es.fpdual.eadmin.eadmin.repositorio.RepositorioDocumento;
 import es.fpdual.eadmin.eadmin.repositorio.RepositorioExpediente;
 import es.fpdual.eadmin.eadmin.servicio.ServicioDocumento;
@@ -52,7 +54,7 @@ public class ServicioExpedienteImpl implements ServicioExpediente {
 		
 	}
 
-	protected Expediente obtenerExpedienteConFechaCorrectaAlta(Expediente documento) {
+	protected Expediente obtenerExpedienteConFechaCorrectaAlta(Expediente expediente) {
 		/*return new Documento(
 				documento.getCodigo(), 
 				documento.getNombre(), 

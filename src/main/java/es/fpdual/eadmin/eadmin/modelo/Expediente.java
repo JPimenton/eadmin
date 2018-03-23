@@ -1,5 +1,6 @@
 package es.fpdual.eadmin.eadmin.modelo;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,10 +16,12 @@ public class Expediente extends AdministracionElectronicaBase {
 
 
 	public Expediente(Integer codigo, String nombre, 
-			Date fechaCreacion, Boolean publico,EstadoExpediente estado, Date fechaActualizacion) {
+			Date fechaCreacion, Boolean publico,EstadoExpediente estado, Date fechaActualizacion, List<Documento> documentos) {
 		super(codigo, nombre, fechaCreacion, publico,fechaActualizacion);
 		this.estado=estado;
+		this.documentos= documentos;
 	}
+	
 
 	public EstadoExpediente getEstado() {
 		return estado;
