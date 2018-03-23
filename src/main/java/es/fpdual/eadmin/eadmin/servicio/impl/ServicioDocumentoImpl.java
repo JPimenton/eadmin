@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.fpdual.eadmin.eadmin.modelo.Documento;
+import es.fpdual.eadmin.eadmin.modelo.builder.DocumentoBuilder;
 import es.fpdual.eadmin.eadmin.repositorio.RepositorioDocumento;
 import es.fpdual.eadmin.eadmin.servicio.ServicioDocumento;
 
@@ -24,10 +25,11 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 	public Documento altaDocumento(Documento documento) {
 		
 		final Documento documentoModificado = 
-				obtenerDocumentoConFechaCorrecta(documento);
+				obtenerDocumentoConFechaCorrectaAlta(documento);
 		
 		repositorioDocumento.altaDocumento(documentoModificado);
 		return documentoModificado;
+		
 		/*repositorioDocumento.altaDocumento(documento);
 		return documento;*/
 	}
@@ -36,7 +38,7 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 	public Documento modificaDocumento(Documento documento) {
 		
 		final Documento documentoModificado = 
-				obtenerDocumentoConFechaCorrecta(documento);
+				obtenerDocumentoConFechaCorrectaMod(documento);
 		
 		repositorioDocumento.modificaDocumento(documentoModificado);
 		return documentoModificado;
@@ -48,14 +50,37 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 		
 	}
 
-	protected Documento obtenerDocumentoConFechaCorrecta(Documento documento) {
-		return new Documento(
+	protected Documento obtenerDocumentoConFechaCorrectaAlta(Documento documento) {
+		/*return new Documento(
 				documento.getCodigo(), 
 				documento.getNombre(), 
 				dameFechaActual(), 
 				documento.getPublico(), 
 				documento.getEstado(), 
-				documento.getFechaUltimaActualizacion());
+				null);*/
+		
+		return new DocumentoBuilder().
+				conCodigo(documento.getCodigo()).
+				conNombre(documento.getNombre()).
+				conFechaCreacion(documento.getFechaCreacion()).
+				conPublico(documento.getPublico()).
+				confechaActualizacion(null).
+				conEstado(documento.getEstado()).
+				construir();
+
+	}
+	
+	protected Documento obtenerDocumentoConFechaCorrectaMod(Documento documento) {
+		/*return new Documento(
+				documento.getCodigo(), 
+				documento.getNombre(), 
+				documento.getFechaCreacion(), 
+				documento.getPublico(), 
+				documento.getEstado(), 
+				dameFechaActual());*/
+		return new DocumentoBuilder().clonar(documento).confechaActualizacion(dameFechaActual()).
+		construir();
+		
 	}
 	
 	protected Date dameFechaActual() {

@@ -8,7 +8,7 @@ public abstract class AdministracionElectronicaBase {
 	private String nombre;
 	private Date fechaCreacion;
 	private Boolean publico;
-	private Date fechaUltimaActualizacion=null;
+	private Date fechaUltimaActualizacion;
 	
 	public AdministracionElectronicaBase(Integer codigo, String nombre, Date fechaCreacion, Boolean publico, Date fechaActualizacion) {
 		super();
@@ -16,7 +16,7 @@ public abstract class AdministracionElectronicaBase {
 		this.nombre = nombre;
 		this.fechaCreacion = fechaCreacion;
 		this.publico = publico;
-		this.fechaUltimaActualizacion=fechaActualizacion;
+		this.fechaUltimaActualizacion=null;
 	}
 	
 	public Integer getCodigo() {
