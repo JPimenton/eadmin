@@ -32,16 +32,7 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento {
 		documentos.set(documentos.indexOf(documento), documentoNuevo);
 	}
 	
-	protected Documento obtenerDocumentoConFechaDeModificacion(Documento documento) {
-		return new Documento(
-				documento.getCodigo(), 
-				documento.getNombre(), 
-				new Date(), 
-				documento.getPublico(), 
-				documento.getEstado(), 
-				documento.getFechaUltimaActualizacion());
-	}
-
+	
 	@Override
 	public void eliminarDocumento(Integer codigo) {
 		Documento documentoEncontrado = null;
@@ -65,6 +56,16 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento {
 	@Override
 	public List<Documento> getDocumentos() {
 		return documentos;
+	}
+
+	protected Documento obtenerDocumentoConFechaDeModificacion(Documento documento) {
+		return new Documento(
+				documento.getCodigo(), 
+				documento.getNombre(), 
+				new Date(), 
+				documento.getPublico(), 
+				documento.getEstado(), 
+				documento.getFechaUltimaActualizacion());
 	}
 
 }

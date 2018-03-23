@@ -1,9 +1,9 @@
 package es.fpdual.eadmin.eadmin.repositorio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import es.fpdual.eadmin.eadmin.modelo.*;
+
 
 public interface RepositorioDocumento {
 		

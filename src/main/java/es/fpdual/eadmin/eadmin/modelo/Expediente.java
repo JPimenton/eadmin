@@ -7,8 +7,8 @@ import java.util.List;
 public class Expediente extends AdministracionElectronicaBase {
 
 	
-	private Date fechaArchivado = null;
-	private EstadoExpediente estado;
+	private final Date fechaArchivado = null;
+	private final EstadoExpediente estado;
 
 	private List<Documento> documentos;
 
