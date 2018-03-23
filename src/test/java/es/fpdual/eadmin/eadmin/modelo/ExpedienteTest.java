@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -19,6 +21,7 @@ public class ExpedienteTest {
 	private static final Date FECHA_ACTUALIZACION = new Date(8/8/2003);
 	private static final Boolean EXPEDIENTE_PUBLICO = true;
 	private static final EstadoExpediente ESTADO_EXPEDIENTE = EstadoExpediente.INICIADO;
+	private static final List<Documento> DOCUMENTOS_EXPEDIENTE = new ArrayList();
 	
 	private Expediente exp;
 	
@@ -26,7 +29,7 @@ public class ExpedienteTest {
 	public void Inicializar() {
 		exp = 
 		new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
-				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION);
+				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION,DOCUMENTOS_EXPEDIENTE);
 	}
 	
 	@Test
@@ -49,14 +52,14 @@ public class ExpedienteTest {
 	@Test
 	public void deberiaDevolverTrueSiTienenIgualCodigo() {
 		final Expediente exp2 = new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
-				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION);
+				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION,DOCUMENTOS_EXPEDIENTE);
 		final Boolean resultado = exp2.equals(exp);
 		assertTrue(resultado);
 	}
 
 	@Test
 	public void deberiaDevolverFalseSiNoTienenIgualCodigo() {
-		final Expediente exp2 = new Expediente(5, null, null, null, null,null);
+		final Expediente exp2 = new Expediente(5, null, null, null, null,null,new ArrayList());
 
 		final Boolean resultado = exp2.equals(exp);
 		assertFalse(resultado);
@@ -71,7 +74,7 @@ public class ExpedienteTest {
 	@Test
 	public void deberiaDevolverHashCodeDelCodigo() {
 		final Expediente exp2 = new Expediente(CODIGO_EXPEDIENTE,NOMBRE_EXPEDIENTE,FECHA_CREACION,
-				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION);
+				EXPEDIENTE_PUBLICO, ESTADO_EXPEDIENTE,FECHA_ACTUALIZACION,DOCUMENTOS_EXPEDIENTE);
 		final int resultado = exp2.hashCode();
 		assertEquals(exp.hashCode(), resultado);
 	}
