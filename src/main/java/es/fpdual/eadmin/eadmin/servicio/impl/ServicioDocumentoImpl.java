@@ -30,8 +30,6 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 		repositorioDocumento.altaDocumento(documentoModificado);
 		return documentoModificado;
 		
-		/*repositorioDocumento.altaDocumento(documento);
-		return documento;*/
 	}
 
 	@Override
@@ -50,14 +48,18 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 		
 	}
 
+	@Override
+	public Documento obtenerDocumentoPorCodigo(Integer codigo) {
+		return repositorioDocumento.obtenerDocumentoPorCodigo(codigo);
+	}
+
+	@Override
+	public List<Documento> obtenerListaDocumentos() {
+		return repositorioDocumento.obtenerListaDocumentos();
+	}
+
 	protected Documento obtenerDocumentoConFechaCorrectaAlta(Documento documento) {
-		/*return new Documento(
-				documento.getCodigo(), 
-				documento.getNombre(), 
-				dameFechaActual(), 
-				documento.getPublico(), 
-				documento.getEstado(), 
-				null);*/
+
 		
 		return new DocumentoBuilder().
 				conCodigo(documento.getCodigo()).
@@ -71,13 +73,7 @@ public class ServicioDocumentoImpl implements ServicioDocumento {
 	}
 	
 	protected Documento obtenerDocumentoConFechaCorrectaMod(Documento documento) {
-		/*return new Documento(
-				documento.getCodigo(), 
-				documento.getNombre(), 
-				documento.getFechaCreacion(), 
-				documento.getPublico(), 
-				documento.getEstado(), 
-				dameFechaActual());*/
+	
 		return new DocumentoBuilder().clonar(documento).confechaActualizacion(dameFechaActual()).
 		construir();
 		

@@ -9,7 +9,9 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -83,6 +85,25 @@ public class ServicioDocumentoImplTest {
 		
 		verify(this.repositorioDocumento).eliminarDocumento(DOCUMENTO.getCodigo());
 		//assertEquals(1, this.repositorioDocumento.getDocumentos().size());
+	}
+	
+	@Test
+	public void deberiaObtenerUnDocumentoPorCodigo() {
+		when (this.repositorioDocumento.obtenerDocumentoPorCodigo(1)).thenReturn(DOCUMENTO);
+		final Documento resultado = this.ServicioDocumento.obtenerDocumentoPorCodigo(DOCUMENTO.getCodigo());
+		assertEquals(resultado,DOCUMENTO);
+	
+	}
+	@Test
+	public void deberiaObtenerListaCodigos() {
+		final List<Documento> documentos = new ArrayList();
+		
+		when (repositorioDocumento.obtenerListaDocumentos()).thenReturn(documentos);
+		
+		final List<Documento> resultado = this.ServicioDocumento.obtenerListaDocumentos();
+		
+		assertSame(resultado, documentos);
+		
 	}
 }
 

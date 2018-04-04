@@ -12,12 +12,12 @@ import es.fpdual.eadmin.eadmin.repositorio.*;
 
 @Component
 public class RepositorioDocumentoImpl implements RepositorioDocumento {
-	
+
 	private List<Documento> documentos = new ArrayList<>();
 
 	@Override
 	public void altaDocumento(Documento documento) {
-		if(documentos.contains(documento)) {
+		if (documentos.contains(documento)) {
 			throw new IllegalArgumentException("El documento ya existe");
 		}
 		documentos.add(documento);
@@ -31,41 +31,35 @@ public class RepositorioDocumentoImpl implements RepositorioDocumento {
 		final Documento documentoNuevo = obtenerDocumentoConFechaDeModificacion(documento);
 		documentos.set(documentos.indexOf(documento), documentoNuevo);
 	}
-	
-	
+
 	@Override
 	public void eliminarDocumento(Integer codigo) {
 		Documento documentoEncontrado = null;
-		
-		/* for(int i = 0; i< documentos.size(); i++) {
-			if ( documentos.get(i).getCodigo().equals(codigo)) {
-				documentoEncontrado = documentos.get(i);
-				break;
-			}
-		}*/
-		
-		documentoEncontrado =
-		documentos.stream().filter(d -> d.getCodigo().equals(codigo)).
-		findFirst().orElseGet(null);
-		
+
+		documentoEncontrado = documentos.stream().filter(d -> d.getCodigo().equals(codigo)).findFirst().orElseGet(null);
+
 		if (Objects.nonNull(documentoEncontrado)) {
 			documentos.remove(documentoEncontrado);
 		}
 	}
-	
+
 	@Override
-	public List<Documento> getDocumentos() {
+	public Documento obtenerDocumentoPorCodigo(Integer codigo) {
+		Documento documentoEncontrado = null;
+
+		documentoEncontrado = documentos.stream().filter(d -> d.getCodigo().equals(codigo)).findFirst().orElseGet(null);
+
+		return documentoEncontrado;
+	}
+
+	@Override
+	public List<Documento> obtenerListaDocumentos() {
 		return documentos;
 	}
 
 	protected Documento obtenerDocumentoConFechaDeModificacion(Documento documento) {
-		return new Documento(
-				documento.getCodigo(), 
-				documento.getNombre(), 
-				new Date(), 
-				documento.getPublico(), 
-				documento.getEstado(), 
-				documento.getFechaUltimaActualizacion());
+		return new Documento(documento.getCodigo(), documento.getNombre(), new Date(), documento.getPublico(),
+				documento.getEstado(), documento.getFechaUltimaActualizacion());
 	}
 
 }

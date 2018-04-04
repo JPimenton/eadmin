@@ -13,5 +13,7 @@ public interface RepositorioDocumento {
 	
 	public abstract void eliminarDocumento(Integer codigo);
 	
-	public List<Documento> getDocumentos();
+	public abstract Documento obtenerDocumentoPorCodigo(Integer codigo);
+	
+	public List<Documento> obtenerListaDocumentos();
 }

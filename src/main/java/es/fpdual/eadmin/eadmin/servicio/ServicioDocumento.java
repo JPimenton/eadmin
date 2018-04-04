@@ -12,4 +12,8 @@ public interface ServicioDocumento {
 	
 	void eliminaDocumento(int Cod);
 	
+	Documento obtenerDocumentoPorCodigo(Integer codigo);
+	
+	List<Documento> obtenerListaDocumentos();
+	
 }

@@ -33,19 +33,6 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 		this.expediente.set(this.expediente.indexOf(expediente), expedienteNuevo);
 	}
 	
-	protected Expediente obtenerExpedienteConFechaDeModificacion(Expediente expediente) {
-		return new Expediente(
-				expediente.getCodigo(), 
-				expediente.getNombre(), 
-				new Date(), 
-				expediente.getPublico(), 
-				expediente.getEstado(), 
-				expediente.getFechaUltimaActualizacion(),
-				expediente.getDocumentos()
-				);
-		
-	}
-
 	@Override
 	public void eliminarExpediente(Integer codigo) {
 		Expediente expedienteEncontrado = null;
@@ -64,7 +51,20 @@ public class RepositorioExpedienteImpl implements RepositorioExpediente {
 			expediente.remove(expedienteEncontrado);
 		}
 	}
-	
+
+	protected Expediente obtenerExpedienteConFechaDeModificacion(Expediente expediente) {
+		return new Expediente(
+				expediente.getCodigo(), 
+				expediente.getNombre(), 
+				new Date(), 
+				expediente.getPublico(), 
+				expediente.getEstado(), 
+				expediente.getFechaUltimaActualizacion(),
+				expediente.getDocumentos()
+				);
+		
+	}
+
 	@Override
 	public List<Expediente> getExpedientes() {
 		return expediente;
